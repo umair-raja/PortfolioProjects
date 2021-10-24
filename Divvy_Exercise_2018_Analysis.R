@@ -1,4 +1,5 @@
 # Divvy_Exercise
+# Data from https://divvy-tripdata.s3.amazonaws.com/index.html
 # Question to Answer: How do annual members and casual riders use Cyclistic bikes differently?
 
 # Install and load required packages

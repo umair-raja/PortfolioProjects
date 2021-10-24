@@ -1,17 +1,14 @@
+-- Exploring Global Covid Data from: https://ourworldindata.org/covid-deaths
+-- Covid Data from Jan 28,2020 - Oct 22, 2021
+-- Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+
+
 SELECT 
 	*
 FROM
 	PortfolioProject.dbo.CovidDeaths
 WHERE continent is not null
 ORDER BY 3,4
-
-
-
---Select 
---	*
---FROM
---	PortfolioProject.dbo.CovidVaccinations
---ORDER BY 3,4
 
 
 -- Select Data to use
@@ -169,7 +166,6 @@ SELECT
 	dea.population,
 	vac.new_vaccinations,
 	SUM(CAST(vac.new_vaccinations as numeric)) OVER (Partition BY dea.Location ORDER BY dea.location, dea.Date) AS RollingPeopleVaccinated
----	(RollingPeopleVaccinated/population)*100 
 FROM
 	PortfolioProject.dbo.CovidDeaths AS dea
 	JOIN PortfolioProject.dbo.CovidVaccinations AS vac
@@ -193,7 +189,6 @@ SELECT
 	dea.population,
 	vac.new_vaccinations,
 	SUM(CAST(vac.new_vaccinations as numeric)) OVER (Partition BY dea.Location ORDER BY dea.location, dea.Date) AS RollingPeopleVaccinated
----	(RollingPeopleVaccinated/population)*100 
 FROM
 	PortfolioProject.dbo.CovidDeaths AS dea
 	JOIN PortfolioProject.dbo.CovidVaccinations AS vac
